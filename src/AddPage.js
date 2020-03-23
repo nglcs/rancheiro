@@ -9,12 +9,12 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import { encode } from "base-64"
+// import { encode } from "base-64"
 
-function preventDefault(event) {
-    event.preventDefault();
-}
-const drawerWidth = 240;
+// function preventDefault(event) {
+//     event.preventDefault();
+// }
+// const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -43,10 +43,14 @@ const useStyles = makeStyles(theme => ({
 
 export default function AddPage() {
     const classes = useStyles();
-    const [disabled, setDisabled] = React.useState(true);
-    const [ACCESS_KEY, setACCESS_KEY] = React.useState();
-    const [ACCESS_SECRET, setACCESS_SECRET] = React.useState();
-    const [name, setNAME] = React.useState();
+    // const [disabled, setDisabled] = React.useState(true);
+    const [disabled, ] = React.useState(true);
+    // const [ACCESS_KEY, setACCESS_KEY] = React.useState();
+    const [, setACCESS_KEY] = React.useState();
+    // const [ACCESS_SECRET, setACCESS_SECRET] = React.useState();
+    const [, setACCESS_SECRET] = React.useState();
+    // const [name, setNAME] = React.useState();
+    const [, setNAME] = React.useState();
     const [value, setValue] = React.useState('16');
 
     const handleChange = event => {

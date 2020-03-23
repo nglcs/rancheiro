@@ -7,9 +7,9 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 
-function preventDefault(event) {
-  event.preventDefault();
-}
+// function preventDefault(event) {
+//   event.preventDefault();
+// }
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -147,7 +147,7 @@ function RancherHost(props) {
 }
 
 export default function Diagram() {
-  const classes = useStyles();
+  // const classes = useStyles();
   const roles = [
     { name: 'role-internal-reverse-1' },
     { name: 'role-internal-reverse-2' },
@@ -171,7 +171,7 @@ export default function Diagram() {
       <Grid item>
         <Grid direction="row" container >
           {hosts.map((host) =>
-            host.type == 'reverse' ?
+            host.type === 'reverse' ?
               <Grid item>
                 <Host name={host.name} roles={host.roles} type={host.type} />
               </Grid>
@@ -183,7 +183,7 @@ export default function Diagram() {
       <Grid item>
         <Grid direction="row" container >
           {hosts.map((host) =>
-            host.type != 'reverse' ?
+            host.type !== 'reverse' ?
               <Grid item>
                 <Host name={host.name} roles={host.roles} type={host.type} />
               </Grid>

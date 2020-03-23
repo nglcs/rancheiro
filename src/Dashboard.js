@@ -131,8 +131,12 @@ export default function Dashboard() {
     setOpen(false);
   };
 
-  const handlePageAdd = () => {
+  const handleLinkAdd = () => {
     setPage(1);
+  };
+
+  const handleLinkDashboard = () => {
+    setPage(0);
   };
 
   return (
@@ -168,7 +172,7 @@ export default function Dashboard() {
         </div>
         <Divider />
         <List >
-          <ListItem button>
+          <ListItem button onClick={handleLinkDashboard}>
             <ListItemIcon >
               <DashboardIcon />
             </ListItemIcon>
@@ -183,7 +187,7 @@ export default function Dashboard() {
         </List>
         <Divider />
         <List>
-          <ListItem onClick={handlePageAdd} button>
+          <ListItem onClick={handleLinkAdd} button>
             <ListItemIcon>
               <AddCircleIcon />
             </ListItemIcon>

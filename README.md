@@ -1,4 +1,4 @@
-# Create React App example
+# Rancher Diagram
 
 ## How to use
 

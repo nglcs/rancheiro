@@ -7,9 +7,9 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 
-function preventDefault(event) {
-  event.preventDefault();
-}
+// function preventDefault(event) {
+//   event.preventDefault();
+// }
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -105,14 +105,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-function Hosts(props) {
+function Host(props) {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   return (
     <Paper className={fixedHeightPaper}>
       <Grid container>
         <Grid item >
-          <Icon path={mdiDesktopTower} title={props.name} size={4} />
+          <Icon path={mdiDesktopTower} title={props.name} size={4} color={'#444'} />
 
         </Grid>
         <Grid item>
@@ -139,7 +139,7 @@ function RancherHost(props) {
           <Typography variant="subtitle2" gutterBottom>{props.name}</Typography>
         </Grid>
         <Grid item >
-          <Icon path={mdiServerNetwork} title={props.name} size={3} />
+          <Icon path={mdiServerNetwork} title={props.name} size={3} color={'#444'}/>
         </Grid>
       </Grid>
     </Paper>
@@ -147,7 +147,7 @@ function RancherHost(props) {
 }
 
 export default function Diagram() {
-  const classes = useStyles();
+  // const classes = useStyles();
   const roles = [
     { name: 'role-internal-reverse-1' },
     { name: 'role-internal-reverse-2' },
@@ -171,9 +171,9 @@ export default function Diagram() {
       <Grid item>
         <Grid direction="row" container >
           {hosts.map((host) =>
-            host.type == 'reverse' ?
+            host.type === 'reverse' ?
               <Grid item>
-                <Hosts name={host.name} roles={host.roles} type={host.type} />
+                <Host name={host.name} roles={host.roles} type={host.type} />
               </Grid>
               :
               null
@@ -183,9 +183,9 @@ export default function Diagram() {
       <Grid item>
         <Grid direction="row" container >
           {hosts.map((host) =>
-            host.type != 'reverse' ?
+            host.type !== 'reverse' ?
               <Grid item>
-                <Hosts name={host.name} roles={host.roles} type={host.type} />
+                <Host name={host.name} roles={host.roles} type={host.type} />
               </Grid>
               :
               null

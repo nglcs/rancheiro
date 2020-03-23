@@ -9,7 +9,7 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Button from '@material-ui/core/Button'
+// import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -131,8 +131,12 @@ export default function Dashboard() {
     setOpen(false);
   };
 
-  const handlePageAdd = () => {
+  const handleLinkAdd = () => {
     setPage(1);
+  };
+
+  const handleLinkDashboard = () => {
+    setPage(0);
   };
 
   return (
@@ -168,7 +172,7 @@ export default function Dashboard() {
         </div>
         <Divider />
         <List >
-          <ListItem button>
+          <ListItem button onClick={handleLinkDashboard}>
             <ListItemIcon >
               <DashboardIcon />
             </ListItemIcon>
@@ -183,7 +187,7 @@ export default function Dashboard() {
         </List>
         <Divider />
         <List>
-          <ListItem onClick={handlePageAdd} button>
+          <ListItem onClick={handleLinkAdd} button>
             <ListItemIcon>
               <AddCircleIcon />
             </ListItemIcon>

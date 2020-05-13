@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
 export default function AddPage() {
     const classes = useStyles();
     // const [disabled, setDisabled] = React.useState(true);
-    const [disabled, ] = React.useState(true);
+    const [disabled,] = React.useState(true);
     // const [ACCESS_KEY, setACCESS_KEY] = React.useState();
     const [, setACCESS_KEY] = React.useState();
     // const [ACCESS_SECRET, setACCESS_SECRET] = React.useState();
@@ -69,16 +69,15 @@ export default function AddPage() {
 
     const getTest = async () => {
         var myHeaders = new Headers();
-        myHeaders.append("Authorization", "Basic 0A6EBFD657D4685747AA:EG4DxchXo1G5Sv2Gx2vSUcCXWwMGh9svDAQ9vnFt");
+        myHeaders.append("Authorization", "Basic MEE2RUJGRDY1N0Q0Njg1NzQ3QUE6RUc0RHhjaFhvMUc1U3YyR3gydlNVY0NYV3dNR2g5c3ZEQVE5dm5GdA==");
+        myHeaders.append("Accept", "application/json");
 
         var requestOptions = {
             method: 'GET',
-            mode: 'no-cors',
             headers: myHeaders,
             redirect: 'follow'
         };
-
-        fetch("https://rancherserver.senado.leg.br/v2-beta/projects/1a22", requestOptions)
+        fetch("/rancher/1a22x", requestOptions)
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));

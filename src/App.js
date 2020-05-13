@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import { fade, makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -9,20 +9,28 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-// import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import Diagram from './pages/Diagram';
 import AddPage from './pages/AddPage'
-
+import data from './config/data.json'
+import SearchIcon from '@material-ui/icons/Search';
+import InputBase from '@material-ui/core/InputBase';
+import Filter1Icon from '@material-ui/icons/Filter1';
+import Filter2Icon from '@material-ui/icons/Filter2';
+import Filter3Icon from '@material-ui/icons/Filter3';
+import Filter4Icon from '@material-ui/icons/Filter4';
+import Filter5Icon from '@material-ui/icons/Filter5';
+import Filter6Icon from '@material-ui/icons/Filter6';
+import Filter7Icon from '@material-ui/icons/Filter7';
+import Filter8Icon from '@material-ui/icons/Filter8';
+import Filter9Icon from '@material-ui/icons/Filter9';
+import FolderOpenIcon from '@material-ui/icons/FolderOpen';
+import listReactFiles from 'list-react-files';
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -88,6 +96,8 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     height: '100vh',
     overflow: 'auto',
+    backgroundColor: '#CACCCC'
+
   },
   container: {
     paddingTop: theme.spacing(4),
@@ -114,7 +124,44 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: 1.5,
     paddingRight: 1.5,
     borderRadius: 6
-  }
+  },
+  search: {
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    '&:hover': {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
+    },
+    marginRight: theme.spacing(2),
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(3),
+      width: 'auto',
+    },
+  },
+  searchIcon: {
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  inputRoot: {
+    color: 'inherit',
+  },
+  inputInput: {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
+    },
+  },
 }));
 
 export default function Dashboard() {
@@ -122,6 +169,19 @@ export default function Dashboard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [page, setPage] = React.useState(0);
+  const [mainHost, setMainHost] = React.useState(data[0].name);
+  const [selectedIndexEnv, setSelectedIndexEnv] = React.useState(0);
+  const [selectedIndexMain, setSelectedIndexMain] = React.useState(0);
+  const [input, setInput] = React.useState('');
+
+  listReactFiles(__dirname).then(files => console.log(files))
+  const handleChange = (event) => {
+    setInput(event.target.value);
+  };
+  const handleMenuItemClick = (event, index) => {
+    setSelectedIndexEnv(index);
+  };
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -129,13 +189,34 @@ export default function Dashboard() {
     setOpen(false);
   };
 
-  const handleLinkAdd = () => {
-    setPage(1);
+  const handleLinkMenu = (name, index) => {
+    return () => {
+      setMainHost(name)
+      setSelectedIndexMain(index)
+      setSelectedIndexEnv(0)
+    }
   };
+  const getIcon = (index) => {
+    if (index === 1)
+      return (<Filter1Icon />)
+    else if (index === 2)
+      return (<Filter2Icon />)
+    else if (index === 3)
+      return (<Filter3Icon />)
+    else if (index === 4)
+      return (<Filter4Icon />)
+    else if (index === 5)
+      return (<Filter5Icon />)
+    else if (index === 6)
+      return (<Filter6Icon />)
+    else if (index === 7)
+      return (<Filter7Icon />)
+    else if (index === 8)
+      return (<Filter8Icon />)
+    else if (index === 9)
+      return (<Filter9Icon />)
 
-  const handleLinkDashboard = () => {
-    setPage(0);
-  };
+  }
 
   return (
     <div className={classes.root}>
@@ -152,8 +233,23 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
+            {mainHost}
           </Typography>
+
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              onChange={handleChange}
+              placeholder="Search…"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -170,39 +266,33 @@ export default function Dashboard() {
         </div>
         <Divider />
         <List >
-          <ListItem button onClick={handleLinkDashboard}>
-            <ListItemIcon >
-              <DashboardIcon />
-            </ListItemIcon>
-            <ListItemText primary="Dashboard" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <ShoppingCartIcon />
-            </ListItemIcon>
-            <ListItemText primary="Orders" />
-          </ListItem>
+          {data.map((mainHost, index) =>
+            <ListItem button onClick={handleLinkMenu(mainHost.name, index)}>
+              <ListItemIcon >
+                {getIcon(index + 1)}
+              </ListItemIcon>
+              <ListItemText primary={mainHost.name} />
+            </ListItem>
+          )}
+
+          <Divider />
+
+          {data[selectedIndexMain].environment.map((option, index) =>
+            <ListItem button onClick={event => handleMenuItemClick(event, index)} selected={index === selectedIndexEnv} >
+              <ListItemIcon >
+                <FolderOpenIcon />
+              </ListItemIcon>
+              <ListItemText primary={option.name} />
+            </ListItem>
+          )}
         </List>
-        <Divider />
-        <List>
-          <ListItem onClick={handleLinkAdd} button>
-            <ListItemIcon>
-              <AddCircleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Add environment" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <RemoveCircleOutlineIcon />
-            </ListItemIcon>
-            <ListItemText primary="Remove environment" />
-          </ListItem>
-        </List>
+
+
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="xl" className={classes.container}>
-          {getStepContent(page)}
+          {getStepContent(page, selectedIndexEnv, selectedIndexMain, input)}
         </Container>
       </main>
     </div>
@@ -210,10 +300,11 @@ export default function Dashboard() {
 }
 
 
-function getStepContent(step) {
+function getStepContent(step, selectedIndexEnv, selectedIndexMain, input) {
+
   switch (step) {
     case 0:
-      return <Diagram />
+      return <Diagram envOption={selectedIndexEnv} mainHost={selectedIndexMain} input={input} />
     case 1:
       return <AddPage />
     default:

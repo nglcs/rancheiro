@@ -1,25 +1,112 @@
-# Rancher Diagram
+# Rancher's Diagram
 
-## How to use
+<p align="center">
+    <img src="https://img.shields.io/static/v1?label=react&message=framework&color=blue&logo=REACT"/>
+    <img src="http://img.shields.io/static/v1?label=License&message=MIT&color=green"/>
+    <img src="http://img.shields.io/static/v1?label=STATUS&message=IN%20DEVELOPMENT&color=RED"/>
+    <a href="https://github.com/nglcs">
+        <img src="https://img.shields.io/badge/Author-Lucas%20Vinícius-brightgreen" alt="Author" />
+    </a>
+</p>
 
-Download the example [or clone the repo](https://github.com/mui-org/material-ui):
+> Automagically generate diagrams of the rancher infrasctructure
 
-```sh
-curl https://codeload.github.com/mui-org/material-ui/tar.gz/master | tar -xz --strip=2 material-ui-master/examples/create-react-app
-cd create-react-app
+
+### :pushpin: Topics 
+
+- [Project description](#descrição-do-projeto)
+
+- [Functionalities](#functionalities)
+
+- [Layout](#mag-layout)
+
+- [Prerequisites](#warning-prerequisites)
+
+- [Installation](#gear-installation)
+
+- [Running](#rocket-running)
+
+- [Languages and dependencies](#books-languages-and-dependencies)
+
+- [Common problems](#exclamation-common-problems)
+
+- [TODO](#memo-todo)
+
+- [Contributors](#octocat-contributors)
+
+- [License](#scroll-licence)
+
+## :page_with_curl: Project description
+
+<p align="justify">
+  Generate a visual representation of selected rancher infrastructure.
+</p>
+
+## :ballot_box_with_check: Functionalities
+
+:heavy_check_mark: Funcionalidade 1  
+
+:heavy_check_mark: Funcionalidade 2  
+
+## :mag: Layout
+
+<p align="center">
+   <img src="public/favicon.ico"/>
+</p>
+
+## :warning: Prerequisites
+
+- [Node](https://nodejs.org/en/download/)
+
+
+## :gear: Installation
+
+Clone the repo:
+```
+git clone https://github.com/nglcs/diagram-rancher.git
 ```
 
-Install it and run:
-
-```sh
+Enter in the folder and install dependencies:
+```
+cd diagram-rancher
 npm install
+```
+
+Make a configuration file:
+```
+asdasdasd
+```
+
+
+## :rocket: Running
+
+Execute in development mode with npm:
+
+```
 npm start
 ```
 
-or:
+## :books: Languages and dependencies
 
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mui-org/material-ui/tree/master/examples/create-react-app)
+- [React](https://pt-br.reactjs.org/docs/create-a-new-react-app.html)
+- [MaterialUI](https://github.com/mui-org/material-ui)
 
-## The idea behind the example
+## :exclamation: Common problems
 
-This example demonstrates how you can use [Create React App](https://github.com/facebookincubator/create-react-app).
+**Module not found: Can't resolve '../config/data.json'**
+SOLUTION: You need to specify the `data.json` configuration file as described in [Installation step](#gear-installation)
+
+## :memo: TODO
+
+- asdasdasdasd
+
+## :octocat: Contributors
+
+| [<img src="https://avatars2.githubusercontent.com/u/28482530?s=460&u=47515efe5e9ff926a6c621c62020915a55cb1c6f&v=4" width=115><br><sub>Lucas Vinícius</sub>](https://github.com/nglcs) |  [<img src="https://avatars2.githubusercontent.com/u/6786018?s=460&v=4" width=115><br><sub>Yago Ernandes</sub>](https://github.com/yagoernandes) | 
+| :---: | :---: 
+
+## :scroll: Licence
+
+The [MIT License]() (MIT)
+
+Copyright :copyright: 2020 - Rancher's Diagram

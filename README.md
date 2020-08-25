@@ -1,6 +1,7 @@
 # Rancheiro
 
 <p align="center">
+    <img src="https://img.shields.io/static/v1?label=nodejs&message=framework&color=blue&logo=REACT"/>
     <img src="https://img.shields.io/static/v1?label=react&message=framework&color=blue&logo=REACT"/>
     <img src="http://img.shields.io/static/v1?label=License&message=MIT&color=green"/>
     <img src="http://img.shields.io/static/v1?label=STATUS&message=IN%20DEVELOPMENT&color=RED"/>

@@ -69,8 +69,6 @@ export default function AddPage() {
 
     const getTest = async () => {
         var myHeaders = new Headers();
-        myHeaders.append("Authorization", "Basic MEE2RUJGRDY1N0Q0Njg1NzQ3QUE6RUc0RHhjaFhvMUc1U3YyR3gydlNVY0NYV3dNR2g5c3ZEQVE5dm5GdA==");
-        myHeaders.append("Accept", "application/json");
 
         var requestOptions = {
             method: 'GET',

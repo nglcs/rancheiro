@@ -9,7 +9,7 @@
     </a>
 </p>
 
-> Automagically generate diagrams of the rancher infrasctructure
+> Automagically generate labels diagrams of the rancher infrasctructure
 
 
 ### :pushpin: Topics 

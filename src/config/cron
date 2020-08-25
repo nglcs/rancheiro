@@ -1,1 +1,0 @@
-*/5 * * * * python3 /app/src/config/requestApi.py

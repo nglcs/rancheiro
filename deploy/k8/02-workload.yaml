@@ -15,22 +15,11 @@ spec:
       labels:
         app.kubernetes.io/name: nginx
     spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: role-reverse-proxy-a
-                    operator: In
-                    values:
-                      - "true"
-      imagePullSecrets:
-        - name: registrydosenado
       restartPolicy: Always
       containers:
         - name: nginx
           imagePullPolicy: Always
-          image: nglcs:1.0.0
+          image: nglcs/rancheiro:1.0.0
           env:
             - name: KEYRANCHER 
               valueFrom:

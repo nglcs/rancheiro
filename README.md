@@ -10,7 +10,7 @@
     </a>
 </p>
 
-> Automagically generate labels diagrams of the rancher infrasctructure
+> Automatically generate labels diagrams of the rancher infrastructure
 
 
 ### :pushpin: Topics 
@@ -40,14 +40,20 @@
 ## :page_with_curl: Project description
 
 <p align="justify">
-  Generate a visual representation of selected rancher infrastructure.
+ The application focuses on documenting labels and assisting in the planning of host relocations Rancher 1.6/2. It allows an easy view of all hosts divided by environments / clusters as well as a history accessible by dates.
 </p>
 
 ## :ballot_box_with_check: Functionalities
 
-:heavy_check_mark: Funcionalidade 1  
+:heavy_check_mark: Sort by rancher and clusters/environment.
 
-:heavy_check_mark: Funcionalidade 2  
+:heavy_check_mark: Sort the hosts by their attributes CPU, RAM, Storage and Name.
+
+:heavy_check_mark: Check your hosts for today's date or a date passed in the calendar.
+
+:heavy_check_mark: Sort by label or hostname.
+
+:heavy_check_mark: Group hosts by their type: reverse, controlplane and worker.
 
 ## :mag: Layout
 
@@ -57,8 +63,8 @@
 
 ## :warning: Prerequisites
 
-- [Node](https://nodejs.org/en/download/)
-
+- [Docker](https://www.docker.com/) or [Kubernetes](https://kubernetes.io/)
+- Rancher API keys
 
 ## :gear: Installation
 

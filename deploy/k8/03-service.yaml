@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rancher-diagrama-srv
+  namespace: rancheiro
+  labels:
+    app.kubernetes.io/name: rancher-diagrama-srv
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: nginx
+  ports:
+    - protocol: TCP
+      name: http
+      port: 80 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rancher-diagrama-db-srv
+  namespace: rancher-diagrama
+  labels:
+    app.kubernetes.io/name: rancher-diagrama-db-srv
+spec:
+  selector:
+    app.kubernetes.io/name: db
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      name: http
+      port: 27017
+

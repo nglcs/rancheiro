@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: rancher-diagrama-ing 
+  namespace: rancheiro
+  labels:
+    app.kubernetes.io/name: rancher-diagrama-ing
+spec:
+  rules:
+    - host: your.host.here
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: rancher-diagrama-srv
+              servicePort: 80
+

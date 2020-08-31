@@ -1,0 +1,107 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: rancheiro
+  labels:
+    app.kubernetes.io/name: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: nginx
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: nginx
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: role-reverse-proxy-a
+                    operator: In
+                    values:
+                      - "true"
+      imagePullSecrets:
+        - name: registrydosenado
+      restartPolicy: Always
+      containers:
+        - name: nginx
+          imagePullPolicy: Always
+          image: nglcs:1.0.0
+          env:
+            - name: KEYRANCHER 
+              valueFrom:
+                secretKeyRef:
+                  key: keyrancher
+                  name: rancher-diagrama-secrets 
+          ports:
+            - containerPort: 80
+              name: http
+          livenessProbe:
+            httpGet:
+              port: 80
+              path: /
+            failureThreshold: 3
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              port: 80
+              path: /
+            failureThreshold: 3
+            periodSeconds: 15
+          startupProbe:
+            httpGet:
+              port: 80
+              path: /
+            failureThreshold: 3
+            periodSeconds: 15
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: db
+  namespace: rancher-diagrama
+  labels:
+    app.kubernetes.io/name: db
+spec:
+  replicas: 1
+  serviceName: rancher-diagrama-db-srv
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: db
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: db
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: role-reverse-proxy-a
+                    operator: In
+                    values:
+                      - "true"
+      hostNetwork: false
+      restartPolicy: Always
+      volumes:
+        - name: lib
+          hostPath:
+            path: /your/path/here
+      containers:
+        - env:
+          - name: MONGODB_PASS
+            valueFrom:
+              secretKeyRef:
+                key: mongodb_pass
+                name: rancher-diagrama-secrets
+          image: mongo:4
+          imagePullPolicy: Always
+          name: mongodb
+          volumeMounts:
+            - mountPath: /data/db
+              name: lib

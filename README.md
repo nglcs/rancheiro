@@ -55,6 +55,7 @@
 
 :heavy_check_mark: Group hosts by their type: reverse, controlplane and worker.
 
+:heavy_check_mark: Identifies labels by color code
 ## :mag: Layout
 
 <p align="center">

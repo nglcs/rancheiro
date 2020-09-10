@@ -18,7 +18,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: rancher-diagrama-db-srv
-  namespace: rancher-diagrama
+  namespace: rancheiro
   labels:
     app.kubernetes.io/name: rancher-diagrama-db-srv
 spec:

@@ -67,12 +67,18 @@
 - [Docker](https://www.docker.com/) or [Kubernetes](https://kubernetes.io/)
 - Rancher API keys
 
-## :gear: Installation
+  It is necessary to create a KEYRANCHER secret key containing:
 
-Clone the repo:
-```
-git clone https://github.com/nglcs/diagram-rancher.git
-```
+  ```
+  https://your.path.rancher1.6/v2-beta;ACCESS_KEY;SECRETKEY\https://your.path.rancher2/v3;ACCESS_KEY;SECRETKEY
+  ```
+  Add as many environments as needed
+
+## :gear: Installation
+**For deploy in k8:**
+
+https://github.com/nglcs/rancheiro/tree/master/deploy/k8
+
 
 Enter in the folder and install dependencies:
 ```

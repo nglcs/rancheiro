@@ -66,15 +66,6 @@ spec:
       labels:
         app.kubernetes.io/name: db
     spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: role-reverse-proxy-a
-                    operator: In
-                    values:
-                      - "true"
       hostNetwork: false
       restartPolicy: Always
       volumes:
